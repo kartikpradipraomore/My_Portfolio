@@ -46,3 +46,20 @@ form {
   width: 100% !important;
   margin-bottom: 15px !important;
 }
+
+/* Ensure input text is visible */
+.contact-form input,
+.contact-form textarea {
+  color: black !important;
+}
+
+/* Adjust placeholder color */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #888 !important;
+}
+
+/* Fix fieldset border color for better visibility */
+.contact-form fieldset {
+  border-color: #5000ca !important;
+}

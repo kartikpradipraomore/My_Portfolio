@@ -7,38 +7,35 @@ import '../assets/styles/Expertise.scss';
 
 const labelsFirst = [
     "React",
-    "TypeScript",
+    "Java",
     "JavaScript",
     "HTML5",
     "CSS3",
     "SASS",
-    "Flask",
-    "Python",
+    "SpringBoot",
+    "Spring_Security",
     "SQL",
     "PostgreSQL",
-    "Postman"
+    "Postman",
+    "Microservices"
 ];
 
 const labelsSecond = [
     "Git",
     "GitHub Actions",
     "Docker",
-    "AWS",
-    "Azure",
-    "Linux",
-    "Snowflake",
-    "Pandas",
-    "Selenium",
+    "Spring Cloud",
+    "Kubernetes",
+    "Jenkins",
+    "GitLab"
 ];
 
 const labelsThird = [
-    "OpenAI",
-    "Groq",
-    "LangChain",
-    "Qdrant",
-    "Hugging Face",
-    "LlamaIndex",
-    "Streamlit",
+    "RabitMq",
+    "Kafka",
+    "FeignClient",
+    "RedisDB",
+
 ];
 
 function Expertise() {
@@ -49,7 +46,7 @@ function Expertise() {
             <div className="skills-grid">
                 <div className="skill">
                     <FontAwesomeIcon icon={faReact} size="3x"/>
-                    <h3>Full Stack Web Development</h3>
+                    <h3>Full Stack Java Development</h3>
                     <p>I have built a diverse array of web applications from scratch using modern technologies such as React and Flask. I have a strong proficiency in the SDLC process and frontend + backend development.</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
@@ -73,8 +70,8 @@ function Expertise() {
 
                 <div className="skill">
                     <FontAwesomeIcon icon={faPython} size="3x"/>
-                    <h3>GenAI & LLM</h3>
-                    <p>Stay relevant in the market by leveraging the latest AI models in your projects. I have professional experience building enterprise grade GenAI-enabled solutions to empower intelligent decision making.</p>
+                    <h3>Tools & Frameworks</h3>
+                    <p>I have worked extensively with modern development tools, leveraging technologies such as Git, Docker, and CI/CD pipelines to streamline development and deployment. I am proficient in database management with PostgreSQL and MySQL, as well as cloud platforms like AWS and Railway.app.</p>
                     <div className="flex-chips">
                         <span className="chip-title">Tech stack:</span>
                         {labelsThird.map((label, index) => (

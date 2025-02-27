@@ -1,3 +1,9 @@
+
+
+
+
+
+
 import React, { useRef, useState } from 'react';
 import '../assets/styles/Contact.scss';
 // import emailjs from '@emailjs/browser';
@@ -7,46 +13,31 @@ import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 
 function Contact() {
+  // ✅ Correct state initialization
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [messageError, setMessageError] = useState(false);
 
-  const [nameError, setNameError] = useState<boolean>(false);
-  const [emailError, setEmailError] = useState<boolean>(false);
-  const [messageError, setMessageError] = useState<boolean>(false);
+  const form = useRef<HTMLFormElement | null>(null);
 
-  const form = useRef();
-
-  const sendEmail = (e: any) => {
+  // ✅ Handle form submission
+  const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
 
-    setNameError(name === '');
-    setEmailError(email === '');
-    setMessageError(message === '');
+    setNameError(name.trim() === '');
+    setEmailError(email.trim() === '');
+    setMessageError(message.trim() === '');
 
-    /* Uncomment below if you want to enable the emailJS */
-
-    // if (name !== '' && email !== '' && message !== '') {
-    //   var templateParams = {
-    //     name: name,
-    //     email: email,
-    //     message: message
-    //   };
-
-    //   console.log(templateParams);
-    //   emailjs.send('service_id', 'template_id', templateParams, 'api_key').then(
-    //     (response) => {
-    //       console.log('SUCCESS!', response.status, response.text);
-    //     },
-    //     (error) => {
-    //       console.log('FAILED...', error);
-    //     },
-    //   );
-    //   setName('');
-    //   setEmail('');
-    //   setMessage('');
-    // }
+    if (name.trim() && email.trim() && message.trim()) {
+      console.log('Form Submitted:', { name, email, message });
+      setName('');
+      setEmail('');
+      setMessage('');
+    }
   };
 
   return (
@@ -63,46 +54,53 @@ function Contact() {
             className='contact-form'
           >
             <div className='form-flex'>
+              {/* ✅ Working Input for Name */}
               <TextField
                 required
-                id="outlined-required"
                 label="Your Name"
                 placeholder="What's your name?"
-                value={name}
+                value={name} // ✅ Bind value to state
                 onChange={(e) => {
+                  console.log('Typing Name:', e.target.value); // Debugging
                   setName(e.target.value);
-                }}
+                }} // ✅ Update state
                 error={nameError}
                 helperText={nameError ? "Please enter your name" : ""}
               />
+              
+              {/* ✅ Working Input for Email */}
               <TextField
                 required
-                id="outlined-required"
                 label="Email / Phone"
                 placeholder="How can I reach you?"
-                value={email}
+                value={email} // ✅ Bind value to state
                 onChange={(e) => {
+                  console.log('Typing Email:', e.target.value); // Debugging
                   setEmail(e.target.value);
-                }}
+                }} // ✅ Update state
                 error={emailError}
                 helperText={emailError ? "Please enter your email or phone number" : ""}
               />
             </div>
+
+            {/* ✅ Working Input for Message */}
             <TextField
               required
-              id="outlined-multiline-static"
               label="Message"
               placeholder="Send me any inquiries or questions"
               multiline
               rows={10}
               className="body-form"
-              value={message}
+              value={message} // ✅ Bind value to state
               onChange={(e) => {
+                console.log('Typing Message:', e.target.value); // Debugging
                 setMessage(e.target.value);
-              }}
+              }} // ✅ Update state
               error={messageError}
               helperText={messageError ? "Please enter the message" : ""}
             />
+
+            {/* ✅ Submit Button */}
             <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
               Send
             </Button>
